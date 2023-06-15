@@ -16,7 +16,7 @@ public class BaseballGame {
         this.answer = answer;
     }
 
-    public BaseballGameResponse play(List<Integer> input) {
+    public BaseballGameResponse play(Numbers input) {
         return answer.compare(input);
     }
 }

@@ -12,10 +12,11 @@ class BaseballGameTest {
     @Test
     void 숫자야구게임을_실행한다() {
         // given
-        BaseballGame baseballGame = new BaseballGame(new Answer(List.of(1, 2, 3)));
+        Numbers numbers = new Numbers(List.of(1, 2, 3));
+        BaseballGame baseballGame = new BaseballGame(new Answer(numbers));
 
         // when
-        BaseballGameResponse result = baseballGame.play(List.of(1, 2, 3));
+        BaseballGameResponse result = baseballGame.play(numbers);
 
         // then
         assertThat(result).isEqualTo(new BaseballGameResponse(3, 0));

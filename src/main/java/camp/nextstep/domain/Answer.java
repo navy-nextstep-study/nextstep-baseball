@@ -2,53 +2,27 @@ package camp.nextstep.domain;
 
 import camp.nextstep.dto.BaseballGameResponse;
 
-import java.util.List;
-
 public class Answer {
 
-    private final List<Integer> numbers;
+    private final Numbers numbers;
 
     public Answer(NumberCreationStrategy strategy) {
         this(strategy.create());
     }
 
-    public Answer(List<Integer> numbers) {
+    public Answer(Numbers numbers) {
         this.numbers = numbers;
     }
 
-    public BaseballGameResponse compare(List<Integer> input) {
+    public BaseballGameResponse compare(Numbers input) {
         int strike = 0;
         int ball = 0;
-        for (int i = 0; i < numbers.size(); i++) {
-            int[] result = compareNumberTo(input, i);
+        for (int answerIndex = 0; answerIndex < numbers.size(); answerIndex++) {
+            int[] result = numbers.compareTo(input, answerIndex);
 
             strike += result[0];
             ball += result[1];
         }
         return new BaseballGameResponse(strike, ball);
-    }
-
-    private int[] compareNumberTo(List<Integer> input, int i) {
-        int strike = 0;
-        int ball = 0;
-        for (int j = 0; j < input.size(); j++) {
-            if (isStrike(input, i, j)) {
-                strike++;
-                continue;
-            }
-
-            if (isBall(input, i, j)) {
-                ball++;
-            }
-        }
-        return new int[]{strike, ball};
-    }
-
-    private boolean isStrike(List<Integer> input, int i, int j) {
-        return isBall(input, i, j) && i == j;
-    }
-
-    private boolean isBall(List<Integer> input, int i, int j) {
-        return numbers.get(i).equals(input.get(j));
     }
 }
