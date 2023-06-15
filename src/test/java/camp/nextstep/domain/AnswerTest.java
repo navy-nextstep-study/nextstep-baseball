@@ -12,9 +12,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class AnswerTest {
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "[{index}] 입력 : {0}, 정답 : {1}")
     @MethodSource
-    void 정답과_입력값을_비교한다(List<Integer> numbers, List<Integer> input, int[] expected) {
+    void 정답과_입력값을_비교한다(List<Integer> numbers, List<Integer> input, BaseballGameResponse expected) {
         // given
         Answer answer = new Answer(numbers);
 
@@ -22,15 +22,14 @@ class AnswerTest {
         BaseballGameResponse result = answer.compare(input);
 
         // then
-        assertThat(result.getStrike()).isEqualTo(expected[0]);
-        assertThat(result.getBall()).isEqualTo(expected[1]);
+        assertThat(result).isEqualTo(expected);
     }
 
     private static Stream<Arguments> 정답과_입력값을_비교한다() {
         return Stream.of(
-                Arguments.of(List.of(1, 2, 3), List.of(3, 4, 5), new int[]{0, 1}),
-                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 3), new int[]{1, 0}),
-                Arguments.of(List.of(1, 2, 3), List.of(2, 5, 3), new int[]{1, 1})
+                Arguments.of(List.of(1, 2, 3), List.of(3, 4, 5), new BaseballGameResponse(0, 1)),
+                Arguments.of(List.of(1, 2, 3), List.of(4, 5, 3), new BaseballGameResponse(1, 0)),
+                Arguments.of(List.of(1, 2, 3), List.of(2, 5, 3), new BaseballGameResponse(1, 1))
         );
     }
 }
