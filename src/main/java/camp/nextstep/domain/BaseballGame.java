@@ -2,8 +2,6 @@ package camp.nextstep.domain;
 
 import camp.nextstep.dto.BaseballGameResponse;
 
-import java.util.List;
-
 public class BaseballGame {
 
     private Answer answer;
