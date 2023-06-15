@@ -8,6 +8,10 @@ public class Answer {
 
     private final List<Integer> numbers;
 
+    public Answer(NumberCreationStrategy strategy) {
+        this(strategy.create());
+    }
+
     public Answer(List<Integer> numbers) {
         this.numbers = numbers;
     }
