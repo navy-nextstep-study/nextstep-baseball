@@ -18,7 +18,7 @@ public class Numbers {
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
     }
 
