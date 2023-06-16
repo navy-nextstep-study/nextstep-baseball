@@ -1,7 +1,10 @@
 package kr.co.baseball;
 
+import kr.co.baseball.controller.BaseballController;
+
 public class BaseballApplication {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        BaseballController baseballController = new BaseballController();
+        baseballController.runBaseball();
     }
 }
