@@ -1,6 +1,6 @@
 package domain;
 
-import kr.co.baseball.domain.PlayerNumbers;
+import kr.co.baseball.domain.Numbers;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class PlayerNumbersExceptionTest {
+public class NumbersExceptionTest {
 
     @Test
     @Disabled
@@ -24,7 +24,7 @@ public class PlayerNumbersExceptionTest {
         List<Integer> input = List.of(1, 2, 0);
 
         // when & then
-        assertThatThrownBy(() -> new PlayerNumbers(input))
+        assertThatThrownBy(() -> new Numbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("0을 포함할 수 없습니다.");
     }
@@ -37,10 +37,10 @@ public class PlayerNumbersExceptionTest {
         List<Integer> input2 = List.of(1, 2);
 
         //when & then
-        assertThatThrownBy(() -> new PlayerNumbers(input1))
+        assertThatThrownBy(() -> new Numbers(input1))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3자리 수만 입력 가능합니다.");
-        assertThatThrownBy(() -> new PlayerNumbers(input2))
+        assertThatThrownBy(() -> new Numbers(input2))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3자리 수만 입력 가능합니다.");
     }
@@ -52,7 +52,7 @@ public class PlayerNumbersExceptionTest {
         List<Integer> input = List.of(1, 2, 2);
 
         //when & then
-        assertThatThrownBy(() -> new PlayerNumbers(input))
+        assertThatThrownBy(() -> new Numbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 값은 입력할 수 없습니다.");
     }
@@ -64,7 +64,7 @@ public class PlayerNumbersExceptionTest {
         List<Integer> input = List.of(10, -1, 7);
 
         //when & then
-        assertThatThrownBy(() -> new PlayerNumbers(input))
+        assertThatThrownBy(() -> new Numbers(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1~9 범위의 숫자만 입력 가능합니다.");
     }

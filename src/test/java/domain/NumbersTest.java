@@ -1,6 +1,6 @@
 package domain;
 
-import kr.co.baseball.domain.PlayerNumbers;
+import kr.co.baseball.domain.Numbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PlayerNumbersTest {
+public class NumbersTest {
 
     @Test
     @DisplayName("정상적인 값을 입력 했을 떄, - SUCCESS")
@@ -19,13 +19,13 @@ public class PlayerNumbersTest {
         List<Integer> input3 = List.of(3, 7, 1);
 
         //when
-        PlayerNumbers playerNumbers1 = new PlayerNumbers(input1);
-        PlayerNumbers playerNumbers2 = new PlayerNumbers(input2);
-        PlayerNumbers playerNumbers3 = new PlayerNumbers(input3);
+        Numbers numbers1 = new Numbers(input1);
+        Numbers numbers2 = new Numbers(input2);
+        Numbers numbers3 = new Numbers(input3);
 
         //then
-        assertEquals(input1, playerNumbers1.getPlayerNumbers());
-        assertEquals(input2, playerNumbers2.getPlayerNumbers());
-        assertEquals(input3, playerNumbers3.getPlayerNumbers());
+        assertEquals(input1, numbers1.getNumbers());
+        assertEquals(input2, numbers2.getNumbers());
+        assertEquals(input3, numbers3.getNumbers());
     }
 }
