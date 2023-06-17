@@ -20,10 +20,10 @@
 
 ## PR 전 체크사항
 
-- [ ] Specification.md에 구현할 기능 목록을 정리해서 추가했는가
-- [ ] PullReq-.md에 PR 내용을 정리했는가
-- [ ] indent는 2까지만 사용했는가
-- [ ] else, switch, case, 3항 연산자를 쓰지 않았는가
-- [ ] System.exit 메소드를 사용하지 않았는가
-- [ ] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시켰는가
-- [ ] Application의 패키지 구조와 구현은 변경하지 않았는가
+- [x] Specification.md에 구현할 기능 목록을 정리해서 추가했는가
+- [x] PullReq-.md에 PR 내용을 정리했는가
+- [x] indent는 2까지만 사용했는가
+- [x] else, switch, case, 3항 연산자를 쓰지 않았는가
+- [x] System.exit 메소드를 사용하지 않았는가
+- [x] 비정상적 입력에 대해서는 IllegalArgumentException을 발생시켰는가
+- [x] Application의 패키지 구조와 구현은 변경하지 않았는가

@@ -14,8 +14,8 @@ public class NumbersCompared {
 
     public int[] compare(List<Integer> computer,
                          List<Integer> player) {
-        int strike = calculateStrike(computer, player);
-        int ball = calculateBall(computer, player, strike);
+        final int strike = calculateStrike(computer, player);
+        final int ball = calculateBall(computer, player, strike);
 
         return new int[]{strike, ball};
     }
@@ -39,7 +39,7 @@ public class NumbersCompared {
     private int calculateBall(List<Integer> computer,
                               List<Integer> player,
                               int strike) {
-        int duplicatedRemoveSize = Stream.of(computer, player)
+        final int duplicatedRemoveSize = Stream.of(computer, player)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toSet())
                 .size();

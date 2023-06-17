@@ -35,7 +35,7 @@ public class Numbers {
     }
 
     private void validateDuplicatedNumbers(List<Integer> input) {
-        List<Integer> temp = input.stream()
+        final List<Integer> temp = input.stream()
                 .distinct()
                 .collect(Collectors.toList());
 
@@ -45,7 +45,7 @@ public class Numbers {
     }
 
     private void validateRangeNumbers(List<Integer> input) {
-        boolean isRange = input.stream()
+        final boolean isRange = input.stream()
                 .allMatch(number -> number >= RANGE_MIN && number <= RANGE_MAX);
 
         if (!isRange) {

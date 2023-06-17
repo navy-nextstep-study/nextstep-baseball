@@ -12,8 +12,8 @@ public class Computer {
     private final Numbers numbers;
 
     public Computer() {
-        ThreadLocalRandom RANDOM = ThreadLocalRandom.current();
-        List<Integer> numbers = RANDOM.ints(RANGE_MIN, RANGE_UNDER_MAX)
+        final ThreadLocalRandom random = ThreadLocalRandom.current();
+        final List<Integer> numbers = random.ints(RANGE_MIN, RANGE_UNDER_MAX)
                 .distinct()
                 .limit(NUMBERS_SIZE)
                 .boxed()
@@ -23,6 +23,6 @@ public class Computer {
     }
 
     public List<Integer> getNumbers() {
-        return numbers.getNumbers();
+        return this.numbers.getNumbers();
     }
 }
