@@ -1,5 +1,6 @@
 package com.nextstep.baseball.numbers;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -10,6 +11,10 @@ public class RandomNumbers {
 
     public RandomNumbers(){
         numbers = createRandomNum();
+    }
+
+    public RandomNumbers(String input){
+        numbers = Arrays.asList(input.split(""));
     }
 
     private List<String> createRandomNum(){

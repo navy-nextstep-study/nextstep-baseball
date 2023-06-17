@@ -43,7 +43,7 @@ public class Console implements Io {
             System.out.printf("%d스트라이크%n", result.getStrikeCount());
             return;
         }
-        if(result.getBallCount() != 0 && result.getStrikeCount() != 0){
+        if(result.getBallCount() != 0 && result.getStrikeCount() == 0){
             System.out.printf("%d볼%n", result.getBallCount());
             return;
         }

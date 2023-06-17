@@ -5,6 +5,7 @@ import com.nextstep.baseball.io.Console;
 import com.nextstep.baseball.menu.Menu;
 import com.nextstep.baseball.numbers.BaseballNumbers;
 import com.nextstep.baseball.numbers.RandomNumbers;
+import com.nextstep.baseball.util.Compare;
 
 public class GameController {
     private boolean gameStatus = true;
@@ -22,9 +23,7 @@ public class GameController {
             console.outputInputMessage();
             String inputGameNumber = console.inputGameNum();
             checkRestart(inputGameNumber);
-
-            GameResult gameResult = new GameResult();// compare.compareNumber(baseballNumbers, randomNumbers);
-
+            GameResult gameResult = Compare.compareNumber(baseballNumbers, randomNumbers);
             checkGameResult(gameResult);
         } while(gameStatus);
     }
@@ -34,6 +33,7 @@ public class GameController {
             randomNumbers = new RandomNumbers();
             restartStatus = false;
         }
+
         baseballNumbers = new BaseballNumbers(inputGameNumber);
     }
 
@@ -41,16 +41,22 @@ public class GameController {
         if(gameResult.isResult()){
             console.outputMenuSelect();
             String inputMenuNum = console.inputMenuNum();
+            checkInputMenuNum(inputMenuNum);
             return;
         }
+
         console.outputResult(gameResult);
     }
 
     private void checkInputMenuNum(String inputMenuNum){
         Menu menu = Menu.findMenu(inputMenuNum);
+
         if(Menu.RESTART == menu){
+            restartStatus = true;
             return;
         }
+
         console.outputEndGame();
+        gameStatus = false;
     }
 }
