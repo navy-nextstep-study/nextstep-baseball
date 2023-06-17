@@ -5,15 +5,15 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class NumbersCompare {
+public class NumbersCompared {
     private static final int BEGIN_INDEX = 0;
     private static final int END_INDEX = 2;
     private static final int ZERO = 0;
     private static final int ONE = 1;
     private static final int COMPUTER_WITH_PLAYER_SIZE = 6;
 
-    public int[] numbersCompare(List<Integer> computer,
-                                List<Integer> player) {
+    public int[] compare(List<Integer> computer,
+                         List<Integer> player) {
         int strike = calculateStrike(computer, player);
         int ball = calculateBall(computer, player, strike);
 
