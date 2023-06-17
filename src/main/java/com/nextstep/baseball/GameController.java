@@ -3,11 +3,15 @@ package com.nextstep.baseball;
 import com.nextstep.baseball.dto.GameResult;
 import com.nextstep.baseball.io.Console;
 import com.nextstep.baseball.menu.Menu;
+import com.nextstep.baseball.numbers.BaseballNumbers;
+import com.nextstep.baseball.numbers.RandomNumbers;
 
 public class GameController {
     private boolean gameStatus = true;
     private boolean restartStatus = true;
     private final Console console;
+    private BaseballNumbers baseballNumbers;
+    private RandomNumbers randomNumbers;
 
     public GameController() {
         this.console = Console.getInstance();
@@ -17,7 +21,7 @@ public class GameController {
         do {
             console.outputInputMessage();
             String inputGameNumber = console.inputGameNum();
-            checkRestart();
+            checkRestart(inputGameNumber);
 
             GameResult gameResult = new GameResult();// compare.compareNumber(baseballNumbers, randomNumbers);
 
@@ -25,10 +29,12 @@ public class GameController {
         } while(gameStatus);
     }
 
-    private void checkRestart(){
+    private void checkRestart(String inputGameNumber){
         if(restartStatus){
-
+            randomNumbers = new RandomNumbers();
+            restartStatus = false;
         }
+        baseballNumbers = new BaseballNumbers(inputGameNumber);
     }
 
     private void checkGameResult(GameResult gameResult){
