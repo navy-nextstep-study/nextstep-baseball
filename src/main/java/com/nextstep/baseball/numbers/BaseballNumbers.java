@@ -11,7 +11,8 @@ public class BaseballNumbers {
     public BaseballNumbers(String inputGameNumber) {
         numbers = splitNumber(inputGameNumber);
         checkIsNumber();
-        checkDistinctAndNumberLength();
+        checkNumberLength();
+        checkNumeberDuplication();
     }
 
     private List<String> splitNumber(String inputGameNumber){
@@ -27,11 +28,13 @@ public class BaseballNumbers {
         }
     }
 
-    private void checkDistinctAndNumberLength(){
+    private void checkNumberLength(){
         if(numbers.size() != 3){
             throw new IllegalArgumentException("입력하신 숫자의 개수가 3개가 아닙니다.");
         }
+    }
 
+    private void checkNumeberDuplication(){
         long listLength = numbers.stream()
                 .distinct()
                 .count();
