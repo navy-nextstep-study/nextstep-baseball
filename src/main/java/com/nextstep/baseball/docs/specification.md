@@ -1,3 +1,7 @@
+## 기능 요구사항 및 구현 내용
+
+![스크린샷 2023-06-18 오후 6 39 33](https://github.com/Hchanghyeon/nextstep-baseball/assets/92444744/a1c97480-6a07-4d38-8594-25d2c294ed55)
+
 <hr>
 
 ### 입/출력
