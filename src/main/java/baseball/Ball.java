@@ -4,19 +4,19 @@ import java.util.Objects;
 
 public class Ball {
     private final int index;
-    private final int number;
+    private final BallNumber number;
 
-    public Ball(int index, int number) {
+    public Ball(int index, String number) {
         this.index = index;
-        this.number = number;
+        this.number = new BallNumber(number);
     }
 
     public BallStatus compare(Ball ball) {
-        if (this.equals(ball)) {
+        if (this.index == ball.index && number.equals(ball.number)) {
             return BallStatus.STRIKE;
         }
 
-        if (this.number == ball.number) {
+        if (this.number.equals(ball.number)) {
             return BallStatus.BALL;
         }
 
