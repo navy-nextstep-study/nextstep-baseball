@@ -10,7 +10,7 @@ class BallValidatorTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1, 9})
-    void 공_1_9(int number) {
+    void 공_번호_1_9(int number) {
         assertThat(BallValidator.validateNumberInRange(number)).isTrue();
     }
 
