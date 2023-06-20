@@ -5,6 +5,7 @@ import baseball.domain.ball.BallGenerator;
 import io.Console;
 
 import java.util.List;
+import java.util.Optional;
 
 public class BaseBallGame implements Game {
 
@@ -28,8 +29,29 @@ public class BaseBallGame implements Game {
             List<Ball> userBalls = ballGenerator.generateBalls(console.inputUserBalls());
             PlayResult result = referee.judgement(computerBalls, userBalls);
             console.outputGameResult(result);
-
+            checkRetry(result);
         } while (gameStatus.isPlay());
+    }
+
+    private void checkRetry(PlayResult result) {
+        if (!result.isCorrect()) {
+            return;
+        }
+
+        if (result.isCorrect()) {
+            gameStatus = GameStatus.STOP;
+            console.outputCorrectAnswerMsg();
+            Optional<RetryMenu> retryMenu = Optional.empty();
+
+            while (retryMenu.isEmpty()) {
+                console.outputRequestRetryMsg();
+                retryMenu = RetryMenu.findRetryMenu(console.inputRetryNumber());
+            }
+
+            if (retryMenu.get() == RetryMenu.RETRY) {
+                gameStatus = GameStatus.RETRY;
+            }
+        }
     }
 
     @Override
