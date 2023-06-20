@@ -3,10 +3,26 @@ package com.nextstep.baseball.domain;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Numbers {
 
     public static final int NUMBERS_SIZE = 3;
+
+    private final List<Number> baseballNumbers;
+
+    public Numbers(List<Integer> numbers) {
+        validateNumbersSize(numbers);
+        validateNumbersRange(numbers);
+        validateNumbersDuplication(numbers);
+        this.baseballNumbers = getNumbers(numbers);
+    }
+
+    private static List<Number> getNumbers(List<Integer> numbers) {
+        return numbers.stream()
+                .map(Number::new)
+                .collect(Collectors.toList());
+    }
 
     public static void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != NUMBERS_SIZE) {

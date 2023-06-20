@@ -1,6 +1,6 @@
 package com.nextstep.baseball.domain;
 
-public class Number {
+public record Number(int number) {
 
     public static final int MIN = 1;
     public static final int MAX = 9;
