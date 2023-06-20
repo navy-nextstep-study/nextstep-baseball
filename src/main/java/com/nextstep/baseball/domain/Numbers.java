@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Numbers {
 
@@ -19,8 +20,8 @@ public class Numbers {
     }
 
     private static List<Number> getNumbers(List<Integer> numbers) {
-        return numbers.stream()
-                .map(Number::new)
+        return IntStream.range(0, NUMBERS_SIZE)
+                .mapToObj(i -> new Number(i + 1, numbers.get(i)))
                 .collect(Collectors.toList());
     }
 
@@ -41,5 +42,9 @@ public class Numbers {
         if (numbersSet.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException("중복된 수가 있습니다.");
         }
+    }
+
+    public BaseBallStatus matchNumber() {
+        return null;
     }
 }
