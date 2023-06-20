@@ -5,7 +5,7 @@ public class BaseballStatus {
     private final int strikes;
     private final int balls;
 
-    BaseballStatus(int strike, int ball) {
+    public BaseballStatus(int strike, int ball) {
         this.strikes = strike;
         this.balls = ball;
     }
@@ -16,5 +16,9 @@ public class BaseballStatus {
 
     public int getBalls() {
         return balls;
+    }
+
+    public boolean is3Strikes() {
+        return strikes == 3;
     }
 }
