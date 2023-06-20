@@ -8,25 +8,17 @@ public class BallNumber {
     private final int number;
     private static final String ERRMSG = "1 ~ 9 사이의 숫자만 입력이 가능합니다.";
 
-    public BallNumber(String number) {
+    public BallNumber(int number) {
         validateNumber(number);
-        this.number = Integer.parseInt(number);
+        this.number = number;
     }
 
-    private void validateNumber(String number) {
-        validateIsDigit(number);
+    private void validateNumber(int number) {
         validateInRange(number);
     }
 
-    private void validateIsDigit(String number) {
-        if (!Character.isDigit(number.charAt(0))) {
-            throw new IllegalArgumentException(ERRMSG);
-        }
-    }
-
-    private void validateInRange(String number) {
-        int convertNumber = Integer.parseInt(number);
-        if (isOutOfBound(convertNumber)) {
+    private void validateInRange(int number) {
+        if (isOutOfBound(number)) {
             throw new IllegalArgumentException(ERRMSG);
         }
     }

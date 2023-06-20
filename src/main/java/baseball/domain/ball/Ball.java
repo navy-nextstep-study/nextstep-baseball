@@ -6,7 +6,7 @@ public class Ball {
     private final BallIndex ballIndex;
     private final BallNumber number;
 
-    public Ball(int index, String number) {
+    public Ball(int index, int number) {
         this.ballIndex = new BallIndex(index);
         this.number = new BallNumber(number);
     }
