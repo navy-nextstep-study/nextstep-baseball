@@ -43,8 +43,4 @@ public class Numbers {
             throw new IllegalArgumentException("중복된 수가 있습니다.");
         }
     }
-
-    public BaseBallStatus matchNumber() {
-        return null;
-    }
 }
