@@ -1,7 +1,5 @@
-package baseball.validation;
+package baseball;
 
-import baseball.Ball;
-import baseball.BallStatus;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

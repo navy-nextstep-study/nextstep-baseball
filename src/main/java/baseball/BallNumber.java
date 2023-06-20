@@ -4,7 +4,8 @@ import java.util.Objects;
 
 public class BallNumber {
 
-    int number;
+    private final int number;
+    private static final String ERRMSG = "1 ~ 9 사이의 숫자만 입력이 가능합니다.";
 
     public BallNumber(String number) {
         validateNumber(number);
@@ -13,19 +14,24 @@ public class BallNumber {
 
     private void validateNumber(String number) {
         validateIsDigit(number);
-        validateIsRange(number);
+        validateInRange(number);
     }
 
     private void validateIsDigit(String number) {
-        if (!Character.isDigit(number.charAt(0)))
-            throw new IllegalArgumentException("숫자만 입력이 가능합니다.");
+        if (!Character.isDigit(number.charAt(0))) {
+            throw new IllegalArgumentException(ERRMSG);
+        }
     }
 
-    private void validateIsRange(String number) {
+    private void validateInRange(String number) {
         int convertNumber = Integer.parseInt(number);
-        if (convertNumber < 1 || convertNumber > 9) {
-            throw new IllegalArgumentException("숫자의 범위는 1 ~ 9 사이여야 합니다.");
+        if (isOutOfBound(convertNumber)) {
+            throw new IllegalArgumentException(ERRMSG);
         }
+    }
+
+    private boolean isOutOfBound(int convertNumber) {
+        return convertNumber < 1 || convertNumber > 9;
     }
 
     @Override
