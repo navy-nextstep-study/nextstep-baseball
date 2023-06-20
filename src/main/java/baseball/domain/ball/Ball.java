@@ -1,26 +1,30 @@
-package baseball;
+package baseball.domain.ball;
 
 import java.util.Objects;
 
 public class Ball {
-    private final int index;
+    private final BallIndex ballIndex;
     private final BallNumber number;
 
     public Ball(int index, String number) {
-        this.index = index;
+        this.ballIndex = new BallIndex(index);
         this.number = new BallNumber(number);
     }
 
     public BallStatus compare(Ball ball) {
-        if (this.index == ball.index && number.equals(ball.number)) {
+        if (this.equals(ball)) {
             return BallStatus.STRIKE;
         }
 
-        if (this.number.equals(ball.number)) {
+        if (isEqualsNumber(ball)) {
             return BallStatus.BALL;
         }
 
         return BallStatus.NOTHING;
+    }
+
+    public boolean isEqualsNumber(Ball ball) {
+        return this.number.equals(ball.number);
     }
 
     @Override
@@ -28,11 +32,11 @@ public class Ball {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ball ball = (Ball) o;
-        return index == ball.index && number == ball.number;
+        return Objects.equals(ballIndex, ball.ballIndex) && Objects.equals(number, ball.number);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(index, number);
+        return Objects.hash(ballIndex, number);
     }
 }
