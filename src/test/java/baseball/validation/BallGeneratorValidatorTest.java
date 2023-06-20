@@ -13,7 +13,7 @@ class BallGeneratorValidatorTest {
     @ValueSource(strings = {"12", "1478", ""})
     void 공_생성_길이_불일치(String input) {
         assertThatThrownBy(() -> BallGeneratorValidator.validateBall(input))
-                .hasMessageContaining("볼의 개수는 " + BallGenerator.BALL_COUNT + "이여야 합니다.");
+                .hasMessageContaining("볼의 개수는 " + BallGenerator.BALL_COUNT + "개 여야 합니다.");
     }
 
     @ParameterizedTest

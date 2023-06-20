@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class BallGeneratorValidator {
 
-    private static final String BALL_COUNT_ERR_MSG = "볼의 개수는 " + BallGenerator.BALL_COUNT + "이여야 합니다.";
+    private static final String BALL_COUNT_ERR_MSG = "볼의 개수는 " + BallGenerator.BALL_COUNT + "개 여야 합니다.";
     private static final String BALL_NUMBER_ERR_MSG = "각 수는 1 ~ 9 사이의 숫자만 입력이 가능합니다.";
     private static final String BALL_NUMBER_DUPLICATED_ERR_MSG = "각 수는 중복되지 않은 숫자여야 합니다.";
 
