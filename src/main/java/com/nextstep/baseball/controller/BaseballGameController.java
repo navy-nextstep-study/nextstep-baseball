@@ -14,4 +14,14 @@ public class BaseballGameController {
         }
         return false;
     }
+
+    public boolean restartGame(int menu) {
+        if (menu == 1) {
+            return true;
+        }
+        if (menu == 2) {
+            return false;
+        }
+        throw new IllegalArgumentException("다시 선택해주세요.");
+    }
 }

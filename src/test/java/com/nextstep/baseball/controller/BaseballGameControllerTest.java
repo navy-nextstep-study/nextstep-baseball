@@ -6,6 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseballGameControllerTest {
 
@@ -28,5 +29,25 @@ class BaseballGameControllerTest {
     void continueGame() {
         BaseballStatus status = new BaseballStatus(1, 0);
         assertThat(baseballGameController.isGameEnd(status)).isFalse();
+    }
+
+    @Test
+    @DisplayName("1이 들어오면 게임을 새로 시작")
+    void restartGame() {
+        assertThat(baseballGameController.restartGame(1)).isTrue();
+    }
+
+    @Test
+    @DisplayName("2이 들어오면 게임을 완전히 종료")
+    void quitGameCompletely() {
+        assertThat(baseballGameController.restartGame(2)).isFalse();
+    }
+
+    @Test
+    @DisplayName("1이나 2 이외에 값이 들어온 경우")
+    void otherMenuSelectionException() {
+        assertThatThrownBy(() -> baseballGameController.restartGame(3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("다시 선택해주세요.");
     }
 }
