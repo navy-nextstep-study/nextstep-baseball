@@ -9,4 +9,10 @@ public class Numbers {
             throw new IllegalArgumentException("3자리 숫자여야 합니다.");
         }
     }
+
+    public static void validateNumbersRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            Number.validate(number);
+        }
+    }
 }
