@@ -31,4 +31,15 @@ public class NumbersTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1부터 9까지의 수여야 합니다.");
     }
+
+    @Test
+    @DisplayName("중복 숫자 검증")
+    void validateNumbersDuplication() {
+        assertThatCode(() -> Numbers.validateNumbersDuplication(List.of(1, 2, 3)))
+                .doesNotThrowAnyException();
+
+        assertThatThrownBy(() -> Numbers.validateNumbersDuplication(List.of(1, 2, 2)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("중복된 수가 있습니다.");
+    }
 }
