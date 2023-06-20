@@ -1,6 +1,6 @@
 package com.nextstep.baseball.domain;
 
-public class BaseballNumber {
+public class Number {
 
     public static final int MIN = 1;
     public static final int MAX = 9;

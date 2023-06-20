@@ -1,6 +1,5 @@
-package com.nextstep.baseball;
+package com.nextstep.baseball.util;
 
-import com.nextstep.baseball.domain.util.NumbersGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

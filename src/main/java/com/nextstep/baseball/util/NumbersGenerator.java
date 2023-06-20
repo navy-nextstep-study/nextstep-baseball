@@ -1,4 +1,4 @@
-package com.nextstep.baseball.domain.util;
+package com.nextstep.baseball.util;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
