@@ -1,9 +1,10 @@
-package baseball;
+package baseball.domain.ball;
 
 import java.util.Objects;
 
 public class BallNumber {
-
+    private static final int MIN_NUMBER_RANGE = 1;
+    private static final int MAX_NUMBER_RANGE = 9;
     private final int number;
     private static final String ERRMSG = "1 ~ 9 사이의 숫자만 입력이 가능합니다.";
 
@@ -31,7 +32,7 @@ public class BallNumber {
     }
 
     private boolean isOutOfBound(int convertNumber) {
-        return convertNumber < 1 || convertNumber > 9;
+        return convertNumber < MIN_NUMBER_RANGE || convertNumber > MAX_NUMBER_RANGE;
     }
 
     @Override
