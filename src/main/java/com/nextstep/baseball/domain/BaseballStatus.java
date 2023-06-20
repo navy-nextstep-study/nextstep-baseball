@@ -1,9 +1,9 @@
 package com.nextstep.baseball.domain;
 
-public enum BaseBallStatus {
+public enum BaseballStatus {
     BALL, STRIKE, NOTHING;
 
-    public static BaseBallStatus getStatus(Number number1, Number number2) {
+    public static BaseballStatus getStatus(BaseballNumber number1, BaseballNumber number2) {
         if (number1.isStrike(number2)) {
             return STRIKE;
         }

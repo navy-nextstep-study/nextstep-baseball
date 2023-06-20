@@ -6,22 +6,22 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Numbers {
+public class BaseballNumbers {
 
     public static final int NUMBERS_SIZE = 3;
 
-    private final List<Number> baseballNumbers;
+    private final List<BaseballNumber> baseballNumbers;
 
-    public Numbers(List<Integer> numbers) {
+    public BaseballNumbers(List<Integer> numbers) {
         validateNumbersSize(numbers);
         validateNumbersRange(numbers);
         validateNumbersDuplication(numbers);
-        this.baseballNumbers = getNumbers(numbers);
+        this.baseballNumbers = mapNumbers(numbers);
     }
 
-    private static List<Number> getNumbers(List<Integer> numbers) {
+    private static List<BaseballNumber> mapNumbers(List<Integer> numbers) {
         return IntStream.range(0, NUMBERS_SIZE)
-                .mapToObj(i -> new Number(i + 1, numbers.get(i)))
+                .mapToObj(i -> new BaseballNumber(i + 1, numbers.get(i)))
                 .collect(Collectors.toList());
     }
 
@@ -33,7 +33,7 @@ public class Numbers {
 
     public static void validateNumbersRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            Number.validate(number);
+            BaseballNumber.validate(number);
         }
     }
 

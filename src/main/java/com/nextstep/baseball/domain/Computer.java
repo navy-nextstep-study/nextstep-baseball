@@ -9,10 +9,10 @@ public class Computer {
     public static final int MIN = 1;
     public static final int MAX = 9;
 
-    public static Numbers answer;
+    public static BaseballNumbers answer;
 
     static {
-        answer = new Numbers(ThreadLocalRandom.current().ints(MIN, MAX + 1)
+        answer = new BaseballNumbers(ThreadLocalRandom.current().ints(MIN, MAX + 1)
                 .distinct()
                 .limit(NUMBERS_SIZE)
                 .boxed()
