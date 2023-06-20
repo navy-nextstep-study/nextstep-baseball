@@ -11,6 +11,11 @@ public class Referee {
 
         PlayResult playResult = new PlayResult();
 
+        if (userBalls.isEmpty()) {
+            playResult.setError();
+            return playResult;
+        }
+
         for (Ball ball : userBalls) {
             BallStatus status = getBallStatus(computerBalls, ball);
             updateResult(playResult, status);

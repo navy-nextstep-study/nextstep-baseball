@@ -3,6 +3,7 @@ package baseball.domain.game;
 public class PlayResult {
     private int strike;
     private int ball;
+    private boolean error;
 
     public void addStrike() {
         strike++;
@@ -10,6 +11,18 @@ public class PlayResult {
 
     public void addBall() {
         ball++;
+    }
+
+    public void setError() {
+        error = true;
+    }
+
+    public boolean isCorrect() {
+        return this.strike == 3;
+    }
+
+    public boolean isError() {
+        return this.error;
     }
 
     @Override
