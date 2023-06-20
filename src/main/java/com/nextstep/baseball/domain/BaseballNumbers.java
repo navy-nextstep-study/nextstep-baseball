@@ -43,4 +43,8 @@ public class BaseballNumbers {
             throw new IllegalArgumentException("중복된 수가 있습니다.");
         }
     }
+
+    public List<BaseballNumber> getBaseballNumbers() {
+        return baseballNumbers;
+    }
 }

@@ -1,15 +1,20 @@
 package com.nextstep.baseball.domain;
 
-public enum BaseballStatus {
-    BALL, STRIKE, NOTHING;
+public class BaseballStatus {
 
-    public static BaseballStatus getStatus(BaseballNumber number1, BaseballNumber number2) {
-        if (number1.isStrike(number2)) {
-            return STRIKE;
-        }
-        if (number1.isBall(number2)) {
-            return BALL;
-        }
-        return NOTHING;
+    private final int strikes;
+    private final int balls;
+
+    BaseballStatus(int strike, int ball) {
+        this.strikes = strike;
+        this.balls = ball;
+    }
+
+    public int getStrikes() {
+        return strikes;
+    }
+
+    public int getBalls() {
+        return balls;
     }
 }
