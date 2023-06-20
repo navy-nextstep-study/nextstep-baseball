@@ -11,7 +11,7 @@ public class BaseballNumbersGanerator {
     public static final int MIN = 1;
     public static final int MAX = 9;
 
-    public BaseballNumbers generateRandomNumbers() {
+    public static BaseballNumbers generateRandomNumbers() {
         return new BaseballNumbers(ThreadLocalRandom.current().ints(MIN, MAX + 1)
                 .distinct()
                 .limit(NUMBERS_SIZE)
