@@ -38,7 +38,7 @@ public class GameController {
     }
 
     private void checkGameResult(GameResult gameResult){
-        if(gameResult.isResult()){
+        if(gameResult.isCorrect()){
             console.outputMenuSelect();
             String inputMenuNum = console.inputMenuNum();
             checkInputMenuNum(inputMenuNum);

@@ -2,6 +2,7 @@ plugins {
     id 'java'
 }
 
+
 group = 'com.nextstep.baseball'
 version = '1.0-SNAPSHOT'
 

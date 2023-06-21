@@ -17,8 +17,6 @@ public class Compare {
             isStrike(i, baseballNumbers.getNumbers(), randomNumbers.getNumbers());
         }
 
-        isGameEnd();
-
         return gameResult;
     }
 
@@ -34,12 +32,6 @@ public class Compare {
     private static void isBall(int index, List<String> baseballNumbers, List<String> randomNumbers) {
         if(randomNumbers.contains(baseballNumbers.get(index))){
             gameResult.setBallCount(gameResult.getBallCount()+1);
-        }
-    }
-
-    private static void isGameEnd() {
-        if(gameResult.getStrikeCount() == 3){
-            gameResult.setResult(true);
         }
     }
 }
