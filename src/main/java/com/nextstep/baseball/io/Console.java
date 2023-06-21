@@ -29,7 +29,7 @@ public class Console implements Input, Output {
     }
 
     @Override
-    public void outputInputMessage() {
+    public void outputEnterNumberMessage() {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
