@@ -2,13 +2,14 @@ package com.nextstep.baseball;
 
 import com.nextstep.baseball.dto.GameResult;
 import com.nextstep.baseball.io.Console;
+import com.nextstep.baseball.menu.GameStatus;
 import com.nextstep.baseball.menu.Menu;
 import com.nextstep.baseball.numbers.BaseballNumbers;
 import com.nextstep.baseball.numbers.RandomNumbers;
 import com.nextstep.baseball.util.Compare;
 
 public class GameController {
-    private boolean gameStatus = true;
+    private GameStatus gameStatus = GameStatus.START;
     private boolean restartStatus = true;
     private final Console console;
     private BaseballNumbers baseballNumbers;
@@ -25,7 +26,7 @@ public class GameController {
             checkRestart(inputGameNumber);
             GameResult gameResult = Compare.compareNumber(baseballNumbers, randomNumbers);
             checkGameResult(gameResult);
-        } while(gameStatus);
+        } while(gameStatus == GameStatus.START);
     }
 
     private void checkRestart(String inputGameNumber){
@@ -57,6 +58,6 @@ public class GameController {
         }
 
         console.outputEndGame();
-        gameStatus = false;
+        gameStatus = GameStatus.END;
     }
 }
