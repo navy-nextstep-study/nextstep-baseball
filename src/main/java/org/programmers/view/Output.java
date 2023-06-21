@@ -1,13 +1,11 @@
 package org.programmers.view;
 
-import org.programmers.model.Result;
+import org.programmers.model.ResultDto;
 
 public interface Output {
     void printInputMessage();
 
-    void printResult(Result result); //dto 이용
+    void printResult(ResultDto result); //dto 이용
 
-    void printFinishMessage();
-
-    void printRetryMessage();
+    void printFinishAndRestartMessage();
 }

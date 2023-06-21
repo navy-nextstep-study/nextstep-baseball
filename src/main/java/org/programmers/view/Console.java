@@ -1,6 +1,6 @@
 package org.programmers.view;
 
-import org.programmers.model.Result;
+import org.programmers.model.ResultDto;
 
 import java.util.Scanner;
 
@@ -16,21 +16,33 @@ public class Console implements Input, Output {
     }
 
     @Override
-    public void printResult(Result result) {
-        System.out.println();//todo : enum 개발하고 여기 다시 정리
+    public void printResult(ResultDto result) {
+        if (result.getBall() > 0 && result.getStrike() > 0) {
+            System.out.printf("%d볼 %d스트라이크\n", result.getBall(), result.getStrike());
+            return;
+        }
+
+        if (result.getStrike() == 0 && result.getBall() == 0) {
+            System.out.println("낫싱");
+            return;
+        }
+
+        if (result.getStrike() == 0) {
+            System.out.printf("%d볼\n", result.getBall());
+            return;
+        }
+
+        if (result.getBall() == 0) {
+            System.out.printf("%d스트라이크\n", result.getStrike());
+        }
     }
 
     @Override
-    public void printFinishMessage() {
+    public void printFinishAndRestartMessage() {
         System.out.println(GAME_FINISH_MESSAGE);
-    }
-
-    @Override
-    public void printRetryMessage() {
         System.out.println(GAME_RETRY_MESSAGE);
     }
 
-    //입력 관련 함수
 
     @Override
     public String readNumber() {
