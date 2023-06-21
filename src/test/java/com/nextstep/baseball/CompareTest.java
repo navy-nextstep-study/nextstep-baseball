@@ -16,7 +16,6 @@ public class CompareTest {
         RandomNumbers randomNumbers = new RandomNumbers("134");
 
         GameResult gameResultExpect = new GameResult();
-        gameResultExpect.setResult(false);
         gameResultExpect.setBallCount(1);
         gameResultExpect.setStrikeCount(1);
 

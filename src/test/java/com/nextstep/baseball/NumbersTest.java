@@ -32,7 +32,7 @@ public class NumbersTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1234","12","3"})
-    void 입력한_수의_길이가_3이_아닐때_예외가_빨생된다(String inputNumber){
+    void 입력한_수의_길이가_3이_아닐때_예외가_발생된다(String inputNumber){
         // when && then
         Assertions.assertThatThrownBy(() -> new BaseballNumbers(inputNumber))
                 .isInstanceOf(IllegalArgumentException.class)

@@ -21,7 +21,7 @@ public class GameController {
 
     public void run(){
         do {
-            console.outputInputMessage();
+            console.outputEnterNumberMessage();
             String inputGameNumber = console.inputGameNum();
             checkRestart(inputGameNumber);
             GameResult gameResult = Compare.compareNumber(baseballNumbers, randomNumbers);
