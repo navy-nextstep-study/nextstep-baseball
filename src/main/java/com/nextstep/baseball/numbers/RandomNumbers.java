@@ -8,6 +8,9 @@ import java.util.stream.Stream;
 
 public class RandomNumbers {
     private final List<String> numbers;
+    private final int RANDOM_NUM_START = 1;
+    private final int RANDOM_NUM_END = 10;
+    private final int RANDOM_NUM_LENGTH = 3;
 
     public RandomNumbers(){
         numbers = createRandomNum();
@@ -18,9 +21,9 @@ public class RandomNumbers {
     }
 
     private List<String> createRandomNum(){
-        return new Random().ints(1,10)
+        return new Random().ints(RANDOM_NUM_START,RANDOM_NUM_END)
                 .distinct()
-                .limit(3)
+                .limit(RANDOM_NUM_LENGTH)
                 .boxed()
                 .map(String::valueOf)
                 .collect(Collectors.toList());

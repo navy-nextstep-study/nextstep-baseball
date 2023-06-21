@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 public class BaseballNumbers {
     private final List<String> numbers;
+    private final int BASEBALL_NUMBER_LENGTH = 3;
 
     public BaseballNumbers(String inputGameNumber) {
         numbers = splitNumber(inputGameNumber);
@@ -29,7 +30,7 @@ public class BaseballNumbers {
     }
 
     private void checkNumberLength(){
-        if(numbers.size() != 3){
+        if(numbers.size() != BASEBALL_NUMBER_LENGTH){
             throw new IllegalArgumentException("입력하신 숫자의 개수가 3개가 아닙니다.");
         }
     }
@@ -39,7 +40,7 @@ public class BaseballNumbers {
                 .distinct()
                 .count();
 
-        if(listLength != 3){
+        if(listLength != BASEBALL_NUMBER_LENGTH){
             throw new IllegalArgumentException("동일한 숫자를 입력하셨습니다.");
         }
     }
