@@ -18,7 +18,6 @@ public class RandomNumber {
                 numbers.add(randomNumber);
             }
         }
-
         return numbers;
     }
 

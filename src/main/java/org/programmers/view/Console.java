@@ -8,7 +8,7 @@ public class Console implements Input, Output {
     private static final String INPUT_MESSAGE = "숫자를 입력해 주세요 :";
     private static final String GAME_FINISH_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
     private static final String GAME_RETRY_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     @Override
     public void printInputMessage() {
@@ -46,12 +46,12 @@ public class Console implements Input, Output {
 
     @Override
     public String readNumber() {
-        return scanner.nextLine();
+        return SCANNER.nextLine();
     }
 
     @Override
     public int readRetryMenu() {
-        String str = scanner.nextLine();
+        String str = SCANNER.nextLine();
         return Integer.parseInt(str);
     }
 }

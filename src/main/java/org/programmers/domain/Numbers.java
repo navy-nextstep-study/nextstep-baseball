@@ -4,18 +4,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class Numbers {
-    private final List<Integer> numbers;
-
-    private final int MIN_VALUE = 1;
-    private final int MAX_VALUE = 9;
+    private static final int MIN_VALUE = 1;
+    private static final int MAX_VALUE = 9;
+    private final List<Integer> NUMBERS;
 
     public Numbers(List<Integer> numbers) {
-        this.numbers = numbers;
         validateNumbers(numbers);
+        this.NUMBERS = numbers;
     }
 
     public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
+        return Collections.unmodifiableList(NUMBERS);
     }
 
     private void validateNumbers(List<Integer> numbers) {

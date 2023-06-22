@@ -11,7 +11,6 @@ public class NumbersComparator {
         List<Integer> playerNumbers = numbers.getNumbers();
         int strike = getStrikeCount(randomNumbers, playerNumbers); //스트라이크 개수
         int ball = getBallCount(randomNumbers, playerNumbers, strike);
-        System.out.println(strike + " " + ball);
 
         return new ResultDto(ball, strike);
     }
@@ -26,15 +25,15 @@ public class NumbersComparator {
                 strikeCount += 1;
             }
         }
-
         return strikeCount;
     }
 
     private int getBallCount(List<Integer> randomNumbers,
                              List<Integer> playerNumbers,
                              int strike) {
-
-        if (strike >= NUMBERS_SIZE) return 0;
+        if (strike >= NUMBERS_SIZE) {
+            return 0;
+        }
 
         int answer = 0;
         for (int i = 0; i < NUMBERS_SIZE; i++) {
@@ -44,7 +43,6 @@ public class NumbersComparator {
                 }
             }
         }
-
         return answer - strike;
     }
 

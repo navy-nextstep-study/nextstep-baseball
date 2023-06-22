@@ -4,5 +4,4 @@ public interface Input {
     String readNumber();
 
     int readRetryMenu();
-
 }

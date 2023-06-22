@@ -11,24 +11,19 @@ import org.programmers.view.Console;
 import java.util.List;
 
 public class BaseballController {
-    private ProcessStatus processStatus = ProcessStatus.ONGOING;
+    private static List<Integer> randomNumbers;
     private static final Console console = new Console();
     private static final NumbersComparator numberChecker = new NumbersComparator();
-    private static List<Integer> randomNumbers;
+    private ProcessStatus processStatus = ProcessStatus.ONGOING;
 
     public void run() {
         randomNumbers = RandomNumber.createRandomNumber();
         do {
             console.printInputMessage();
-
             Numbers number = StringConverter.convertToNumbers(console.readNumber());
-
             ResultDto dto = numberChecker.checkNumber(number, randomNumbers);
-
             console.printResult(dto);
-
             checkResultAndRetry(dto);
-
         } while (processStatus.equals(ProcessStatus.ONGOING));
     }
 
