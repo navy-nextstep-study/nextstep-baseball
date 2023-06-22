@@ -3,6 +3,7 @@ package kr.co.baseball.controller;
 import kr.co.baseball.domain.Computer;
 import kr.co.baseball.domain.NumbersComparator;
 import kr.co.baseball.domain.Player;
+import kr.co.baseball.dto.ResponseDTO;
 import kr.co.baseball.util.StringConverter;
 import kr.co.baseball.view.InputView;
 import kr.co.baseball.view.OutputView;
@@ -10,11 +11,11 @@ import kr.co.baseball.view.OutputView;
 import java.util.function.Predicate;
 
 public class BaseballController {
-    private static final Predicate<int[]> NO_STRIKE = result -> result[0] == 0;
-    private static final Predicate<int[]> NO_BALL = result -> result[1] == 0;
-    private static final Predicate<int[]> SUCCESS = result -> result[0] == 3;
-    private static final Predicate<int[]> ONE_MORE_STRIKES = result -> result[0] > 0;
-    private static final Predicate<int[]> ONE_MORE_BALLS = result -> result[1] > 0;
+    private static final Predicate<ResponseDTO> NO_STRIKE = result -> result.getStrike() == 0;
+    private static final Predicate<ResponseDTO> NO_BALL = result -> result.getBall() == 0;
+    private static final Predicate<ResponseDTO> SUCCESS = result -> result.getStrike() == 3;
+    private static final Predicate<ResponseDTO> ONE_MORE_STRIKES = result -> result.getStrike() > 0;
+    private static final Predicate<ResponseDTO> ONE_MORE_BALLS = result -> result.getBall() > 0;
     private static final int RESTART = 1;
     private boolean isRun = true;
     private Computer computerNumber;
@@ -26,7 +27,7 @@ public class BaseballController {
         do {
             try {
                 Player player = new Player(StringConverter.convert(InputView.inputNumber()));
-                int[] result = numbersComparator.compare(computerNumber, player);
+                ResponseDTO result = numbersComparator.compare(computerNumber, player);
                 findOutputByResult(result);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -34,7 +35,7 @@ public class BaseballController {
         } while (isRun);
     }
 
-    private void findOutputByResult(int[] result) {
+    private void findOutputByResult(ResponseDTO result) {
         if (NO_STRIKE.test(result) && NO_BALL.test(result)) {
             OutputView.outputNothing();
             return;

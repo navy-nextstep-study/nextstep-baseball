@@ -1,5 +1,7 @@
 package kr.co.baseball.domain;
 
+import kr.co.baseball.dto.ResponseDTO;
+
 import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -12,12 +14,15 @@ public class NumbersComparator {
     private static final int SAME = 1;
     private static final int NOT_SAME = 0;
 
-    public int[] compare(Computer computer,
-                         Player player) {
+    public ResponseDTO compare(Computer computer,
+                               Player player) {
         final int strike = calculateStrike(computer, player);
         final int ball = calculateBall(computer, player, strike);
 
-        return new int[]{strike, ball};
+        return ResponseDTO.builder()
+                .strike(strike)
+                .ball(ball)
+                .build();
     }
 
     private int calculateStrike(Computer computer,

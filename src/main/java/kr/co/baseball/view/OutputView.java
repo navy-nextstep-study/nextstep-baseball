@@ -1,21 +1,22 @@
 package kr.co.baseball.view;
 
+import kr.co.baseball.dto.ResponseDTO;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class OutputView {
 
-    public static void outputResult(int[] result) {
-        System.out.print(result[1] + "볼" + " " + result[0] + "스트라이크\n");
+    public static void outputResult(ResponseDTO result) {
+        System.out.print(result.getBall() + "볼" + " " + result.getStrike() + "스트라이크\n");
     }
 
-    public static void outputNoBall(int[] result) {
-        System.out.print(result[0] + "스트라이크\n");
+    public static void outputNoBall(ResponseDTO result) {
+        System.out.print(result.getStrike() + "스트라이크\n");
     }
 
-    public static void outputNoStrike(int[] result) {
-        System.out.print(result[1] + "볼\n");
+    public static void outputNoStrike(ResponseDTO result) {
+        System.out.print(result.getBall() + "볼\n");
     }
 
     public static void outputNothing() {
