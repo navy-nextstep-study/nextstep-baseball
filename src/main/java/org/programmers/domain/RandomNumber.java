@@ -23,7 +23,7 @@ public class RandomNumber {
     }
 
     private static boolean checkNumbersSize(List<Integer> numbers) {
-        return numbers.size() == NUMBER_SIZE;
+        return numbers.size() < NUMBER_SIZE;
     }
 
 
