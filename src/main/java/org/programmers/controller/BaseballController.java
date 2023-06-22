@@ -28,7 +28,7 @@ public class BaseballController {
     }
 
     public void checkResultAndRetry(ResultDto dto) {
-        if (dto.is3Strike()) {
+        if (isFinish(dto)) {
             console.printFinishAndRestartMessage();
             int menu = console.readRetryMenu();
             if (menu == 2) {
@@ -38,5 +38,8 @@ public class BaseballController {
         }
     }
 
+    private boolean isFinish(ResultDto dto) {
+        return dto.getStrike() == 3;
+    }
 
 }

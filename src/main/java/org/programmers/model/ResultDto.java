@@ -9,10 +9,6 @@ public class ResultDto {
         this.strike = strike;
     }
 
-    public boolean is3Strike() {
-        return (this.strike == 3);
-    }
-
     public int getBall() {
         return ball;
     }

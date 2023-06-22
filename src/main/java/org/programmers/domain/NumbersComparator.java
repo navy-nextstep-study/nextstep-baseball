@@ -45,8 +45,6 @@ public class NumbersComparator {
         }
         return answer - strike;
     }
-
-
 }
 
 
