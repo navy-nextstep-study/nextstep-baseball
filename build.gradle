@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group = 'kr.co.baseball'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    //Assertj
+    testImplementation 'org.assertj:assertj-core:3.22.0'
+
+    //JUnit 5
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
