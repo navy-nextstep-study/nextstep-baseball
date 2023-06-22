@@ -1,27 +1,27 @@
 package kr.co.baseball.domain;
 
-import java.util.*;
+import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class NumbersCompared {
+public class NumbersComparator {
+
     private static final int BEGIN_INDEX = 0;
     private static final int END_INDEX = 2;
-    private static final int ZERO = 0;
-    private static final int ONE = 1;
-    private static final int COMPUTER_WITH_PLAYER_SIZE = 6;
+    private static final int SAME = 1;
+    private static final int NOT_SAME = 0;
 
-    public int[] compare(List<Integer> computer,
-                         List<Integer> player) {
+    public int[] compare(Computer computer,
+                         Player player) {
         final int strike = calculateStrike(computer, player);
         final int ball = calculateBall(computer, player, strike);
 
         return new int[]{strike, ball};
     }
 
-    private int calculateStrike(List<Integer> computer,
-                                List<Integer> player) {
+    private int calculateStrike(Computer computer,
+                                Player player) {
         return IntStream.rangeClosed(BEGIN_INDEX, END_INDEX)
                 .map(i -> checkStrike(computer.get(i), player.get(i)))
                 .sum();
@@ -30,20 +30,20 @@ public class NumbersCompared {
     private int checkStrike(int computerNumber,
                             int playerNumber) {
         if (computerNumber == playerNumber) {
-            return ONE;
+            return SAME;
         }
 
-        return ZERO;
+        return NOT_SAME;
     }
 
-    private int calculateBall(List<Integer> computer,
-                              List<Integer> player,
+    private int calculateBall(Computer computer,
+                              Player player,
                               int strike) {
-        final int duplicatedRemoveSize = Stream.of(computer, player)
+        final int duplicatedRemoveSize = Stream.of(computer.getNumbers(), player.getNumbers())
                 .flatMap(Collection::stream)
                 .collect(Collectors.toSet())
                 .size();
 
-        return COMPUTER_WITH_PLAYER_SIZE - duplicatedRemoveSize - strike;
+        return Numbers.NUMBERS_SIZE + Numbers.NUMBERS_SIZE - duplicatedRemoveSize - strike;
     }
 }

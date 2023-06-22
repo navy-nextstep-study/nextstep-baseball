@@ -1,21 +1,18 @@
 package domain;
 
 import kr.co.baseball.domain.Player;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PlayerExceptionTest {
-
-    @Test
-    @Disabled
-    @DisplayName("숫자가 아닌 값을 포함했을 때,")
-    void isNumber_정답을_맞추기_위해_1_부터_9로_이루어진_3자리_수_입력_FALSE() {
-    }
 
     @Test
     @DisplayName("0을 포함했을 때, - IllegalArgumentException")
@@ -29,18 +26,12 @@ public class PlayerExceptionTest {
                 .hasMessage("0을 포함할 수 없습니다.");
     }
 
-    @Test
+    @ParameterizedTest
+    @MethodSource("세자리_수가_아닌_값을_입력_한다")
     @DisplayName("3자리 수가 아닌 값을 입력 했을 때, - IllegalArgumentException")
-    void validateNumbersSize_정답을_맞추기_위해_1_부터_9로_이루어진_3자리_수_입력_Exception() {
-        //given
-        List<Integer> input1 = List.of(1, 2, 3, 7);
-        List<Integer> input2 = List.of(1, 2);
-
-        //when & then
-        assertThatThrownBy(() -> new Player(input1))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("3자리 수만 입력 가능합니다.");
-        assertThatThrownBy(() -> new Player(input2))
+    void validateNumbersSize_정답을_맞추기_위해_1_부터_9로_이루어진_3자리_수_입력_Exception(List<Integer> input) {
+        //given & when & then
+        assertThatThrownBy(() -> new Player(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3자리 수만 입력 가능합니다.");
     }
@@ -67,5 +58,12 @@ public class PlayerExceptionTest {
         assertThatThrownBy(() -> new Player(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1~9 범위의 숫자만 입력 가능합니다.");
+    }
+
+    private static Stream<Arguments> 세자리_수가_아닌_값을_입력_한다() {
+        return Stream.of(
+                Arguments.of(List.of(1, 2, 3, 7)),
+                Arguments.of(List.of(1, 2))
+        );
     }
 }

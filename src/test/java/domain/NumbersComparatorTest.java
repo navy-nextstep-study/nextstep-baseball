@@ -1,6 +1,8 @@
 package domain;
 
-import kr.co.baseball.domain.NumbersCompared;
+import kr.co.baseball.domain.Computer;
+import kr.co.baseball.domain.NumbersComparator;
+import kr.co.baseball.domain.Player;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -10,16 +12,16 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class NumbersComparedTest {
+public class NumbersComparatorTest {
 
     @ParameterizedTest
     @MethodSource("컴퓨터_숫자와_플레이어_숫자를_비교한다")
-    void 스트라이크는_없고_볼이_N개_있다(List<Integer> computer, List<Integer> player, int[] expected) {
+    void 스트라이크와_볼이_N개_있다(List<Integer> computer, List<Integer> player, int[] expected) {
         //given
-        NumbersCompared numbersCompared = new NumbersCompared();
+        NumbersComparator numbersComparator = new NumbersComparator();
 
         //when
-        int[] actual = numbersCompared.compare(computer, player);
+        int[] actual = numbersComparator.compare(new Computer(computer), new Player(player));
 
         //then
         assertEquals(expected[0], actual[0]);

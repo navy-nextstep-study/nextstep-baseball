@@ -5,24 +5,37 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 public class Computer {
-    private static final int NUMBERS_SIZE = 3;
-    private static final int RANGE_MIN = 1;
-    private static final int RANGE_UNDER_MAX = 10;
 
     private final Numbers numbers;
 
     public Computer() {
         final ThreadLocalRandom random = ThreadLocalRandom.current();
-        final List<Integer> numbers = random.ints(RANGE_MIN, RANGE_UNDER_MAX)
+        final List<Integer> numbers = random.ints(Numbers.RANGE_MIN, Numbers.RANGE_MAX + 1)
                 .distinct()
-                .limit(NUMBERS_SIZE)
+                .limit(Numbers.NUMBERS_SIZE)
                 .boxed()
                 .collect(Collectors.toList());
 
         this.numbers = new Numbers(numbers);
     }
 
+    public Computer(List<Integer> numbers) {
+        this.numbers = new Numbers(numbers);
+    }
+
     public List<Integer> getNumbers() {
         return this.numbers.getNumbers();
+    }
+
+    public int get(int index) {
+        return this.numbers.get(index);
+    }
+
+    public int size() {
+        return this.numbers.getNumbers().size();
+    }
+
+    public boolean contains(int value) {
+        return this.numbers.contains(value);
     }
 }

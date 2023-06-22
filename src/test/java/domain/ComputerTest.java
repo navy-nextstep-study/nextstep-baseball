@@ -26,18 +26,18 @@ public class ComputerTest {
     @DisplayName("임의의 수의 자리수가 3인 지, - SUCCESS")
     void 임의의_수의_자리수가_3인지() {
         //then
-        assertEquals(3, computer1.getNumbers().size());
-        assertEquals(3, computer2.getNumbers().size());
-        assertEquals(3, computer3.getNumbers().size());
+        assertEquals(3, computer1.size());
+        assertEquals(3, computer2.size());
+        assertEquals(3, computer3.size());
     }
 
     @Test
     @DisplayName("임의의 수가 0을 포함하지 않는 지, - SUCCESS")
     void 임의의_수가_0을_포함하지_않는지() {
         //then
-        assertThat(computer1.getNumbers().contains(0)).isFalse();
-        assertThat(computer2.getNumbers().contains(0)).isFalse();
-        assertThat(computer3.getNumbers().contains(0)).isFalse();
+        assertThat(computer1.contains(0)).isFalse();
+        assertThat(computer2.contains(0)).isFalse();
+        assertThat(computer3.contains(0)).isFalse();
     }
 
     @Test

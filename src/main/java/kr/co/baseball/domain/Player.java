@@ -12,4 +12,8 @@ public class Player {
     public List<Integer> getNumbers() {
         return this.numbers.getNumbers();
     }
+
+    public int get(int index) {
+        return this.numbers.get(index);
+    }
 }

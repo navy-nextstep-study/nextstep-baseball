@@ -1,26 +1,32 @@
 package kr.co.baseball.controller;
 
 import kr.co.baseball.domain.Computer;
-import kr.co.baseball.domain.NumbersCompared;
+import kr.co.baseball.domain.NumbersComparator;
 import kr.co.baseball.domain.Player;
 import kr.co.baseball.util.StringConverter;
 import kr.co.baseball.view.InputView;
 import kr.co.baseball.view.OutputView;
 
-import java.util.List;
+import java.util.function.Predicate;
 
 public class BaseballController {
-    private static boolean isRun = true;
-    private static List<Integer> computerNumber;
+    private static final Predicate<int[]> NO_STRIKE = result -> result[0] == 0;
+    private static final Predicate<int[]> NO_BALL = result -> result[1] == 0;
+    private static final Predicate<int[]> SUCCESS = result -> result[0] == 3;
+    private static final Predicate<int[]> ONE_MORE_STRIKES = result -> result[0] > 0;
+    private static final Predicate<int[]> ONE_MORE_BALLS = result -> result[1] > 0;
+    private static final int RESTART = 1;
+    private boolean isRun = true;
+    private Computer computerNumber;
 
     public void runBaseball() throws IllegalArgumentException {
-        NumbersCompared numbersCompared = new NumbersCompared();
-        computerNumber = new Computer().getNumbers();
+        NumbersComparator numbersComparator = new NumbersComparator();
+        computerNumber = new Computer();
 
         do {
             try {
                 Player player = new Player(StringConverter.convert(InputView.inputNumber()));
-                int[] result = numbersCompared.compare(computerNumber, player.getNumbers());
+                int[] result = numbersComparator.compare(computerNumber, player);
                 findOutputByResult(result);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
@@ -29,23 +35,23 @@ public class BaseballController {
     }
 
     private void findOutputByResult(int[] result) {
-        if (result[0] == 0 && result[1] == 0) {
+        if (NO_STRIKE.test(result) && NO_BALL.test(result)) {
             OutputView.outputNothing();
             return;
         }
 
-        if (result[0] == 3 && result[1] == 0) {
+        if (SUCCESS.test(result) && NO_BALL.test(result)) {
             OutputView.outputSuccess();
             restartOrEnd();
             return;
         }
 
-        if (result[0] == 0 && result[1] > 0) {
+        if (NO_STRIKE.test(result) && ONE_MORE_BALLS.test(result)) {
             OutputView.outputNoStrike(result);
             return;
         }
 
-        if (result[0] > 0 && result[1] == 0) {
+        if (ONE_MORE_STRIKES.test(result) && NO_BALL.test(result)) {
             OutputView.outputNoBall(result);
             return;
         }
@@ -54,8 +60,8 @@ public class BaseballController {
     }
 
     private void restartOrEnd() {
-        if (InputView.inputRestart() == 1) {
-            computerNumber = new Computer().getNumbers();
+        if (InputView.inputRestart() == RESTART) {
+            computerNumber = new Computer();
             return;
         }
 
