@@ -35,14 +35,11 @@ public class NumbersComparator {
             return 0;
         }
 
-        int answer = 0;
-        for (int i = 0; i < NUMBERS_SIZE; i++) {
-            for (int j = 0; j < NUMBERS_SIZE; j++) {
-                if (randomNumbers.get(i).equals(playerNumbers.get(j))) {
-                    answer++;
-                }
-            }
-        }
+        int answer = (int) randomNumbers
+                .stream()
+                .filter(playerNumbers::contains)
+                .count();
+
         return answer - strike;
     }
 }
