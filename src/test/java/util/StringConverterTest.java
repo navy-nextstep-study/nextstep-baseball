@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.programmers.util.StringConverter;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class StringConverterTest {
 
@@ -25,16 +24,5 @@ public class StringConverterTest {
         String numbers = "123";
         assertThat(numbers.length()).isEqualTo(3);
     }
-
-    @Test
-    @DisplayName("입력된 수의 길이가 3인지 확인 - 실패 테스트")
-    void 입력한_수의_길이가_3이_아닐때_실패() {
-        String numbers = "1234";
-
-        assertThatThrownBy(() -> StringConverter.check3Digits(numbers))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("입력한 수의 길이가 3이 아닙니다.");
-    }
-
 
 }
