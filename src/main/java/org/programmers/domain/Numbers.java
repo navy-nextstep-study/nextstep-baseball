@@ -6,6 +6,7 @@ import java.util.List;
 public class Numbers {
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 9;
+    private static final int NUMBER_SIZE = 3;
     private final List<Integer> NUMBERS;
 
     public Numbers(List<Integer> numbers) {
@@ -18,6 +19,7 @@ public class Numbers {
     }
 
     private void validateNumbers(List<Integer> numbers) {
+        validateNumberSize(numbers);
         validateRange1To9(numbers);
         validateDuplication(numbers);
     }
@@ -37,6 +39,12 @@ public class Numbers {
                 .count() != numbers.size();
         if (hasDuplicate) {
             throw new IllegalArgumentException("중복된 수가 존재합니다.");
+        }
+    }
+
+    private void validateNumberSize(List<Integer> numbers) {
+        if (numbers.size() != NUMBER_SIZE) {
+            throw new IllegalArgumentException("입력한 수의 길이가 3이 아닙니다.");
         }
     }
 

@@ -9,8 +9,6 @@ public class StringConverter {
     public static Numbers convertToNumbers(String number) {
         number = removeWhiteSpace(number);
 
-        check3Digits(number);
-
         List<Integer> list = number
                 .chars()
                 .mapToObj(Character::getNumericValue)
@@ -20,11 +18,5 @@ public class StringConverter {
 
     public static String removeWhiteSpace(String number) {
         return number.replaceAll("\\s+", "");
-    }
-
-    public static void check3Digits(String num) {
-        if (num.length() != 3) {
-            throw new IllegalArgumentException("입력한 수의 길이가 3이 아닙니다.");
-        }
     }
 }
