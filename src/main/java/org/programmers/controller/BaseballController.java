@@ -24,7 +24,7 @@ public class BaseballController {
             ResultDto dto = numberChecker.checkNumber(number, randomNumbers);
             console.printResult(dto);
             checkResultAndRetry(dto);
-        } while (processStatus.equals(ProcessStatus.ONGOING));
+        } while (processStatus.isOngoing());
     }
 
     public void checkResultAndRetry(ResultDto dto) {
